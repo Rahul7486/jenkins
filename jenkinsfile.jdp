@@ -1,0 +1,59 @@
+pipeline {
+    agent any // Use any available Jenkins agent
+    
+    environment {
+        // Define environment variables
+        APP_NAME = 'my-app'
+        APP_VERSION = '1.0.0'
+    }
+    
+    stages {
+        stage('Pull') {
+            steps {
+                echo 'Code is Pulled'
+                // checkout scm // Checkout the source code from the repository
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Add build commands, e.g., for a Java project
+                // sh 'mvn clean package
+                
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Add test commands, e.g., unit tests
+                // sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Add deployment commands, e.g., deploying to a server
+                // sh "scp target/${APP_NAME}-${APP_VERSION}.jar user@server:/path/to/deploy"
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Cleaning up...'
+            cleanWs() // Clean up the workspace after the pipeline finishes
+        }
+        
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        
+        failure {
+            echo 'Pipeline failed.'
+            // You can add more actions here, like sending failure notifications
+        }
+    }
+}
