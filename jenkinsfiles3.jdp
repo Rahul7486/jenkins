@@ -20,7 +20,6 @@ pipeline {
                 echo 'Building the application...'
                 // Add build commands, e.g., for a Java project
                 // sh 'mvn clean package
-                
             }
         }
         
