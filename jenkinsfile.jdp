@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Pull') {
             steps {
+                git 'https://github.com/shubhamkalsait/studentapp-ui.git'
                 echo 'Code is Pulled'
                 // checkout scm // Checkout the source code from the repository
             }
