@@ -40,20 +40,5 @@ pipeline {
             }
         }
     }
-    
-    post {
-        always {
-            echo 'Cleaning up...'
-            cleanWs() // Clean up the workspace after the pipeline finishes
-        }
-        
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        
-        failure {
-            echo 'Pipeline failed.'
-            // You can add more actions here, like sending failure notifications
-        }
-    }
+
 }
