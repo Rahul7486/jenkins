@@ -20,15 +20,18 @@ pipeline {
             steps {
                 echo 'Building the application...'
                 // Add build commands, e.g., for a Java project
-                // sh 'mvn clean package
+                sh 'mvn clean package'
+                echo 'Build successfull...'
             }
         }
         
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                // Add test commands, e.g., unit tests
-                // sh 'mvn test'
+                echo 'Testing the application...'
+                withSonarQubeEnv(installtion: 'sonar' credentialsId: 'studentui-sonar-token') {
+                    sh 'mvn sonar:sonar'
+                }
+                echo 'Tested successfull'
             }
         }
         
