@@ -31,7 +31,7 @@ pipeline {
                 withSonarQubeEnv(installtion: 'sonar' credentialsId: 'studentui-sonar-token') {
                     sh 'mvn sonar:sonar'
                 }
-                echo 'Tested successfull'
+                echo 'Tested successfully'
             }
         }
         
