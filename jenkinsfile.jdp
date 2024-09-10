@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing the application...'
-                withSonarQubeEnv(installationName: 'sonar' credentialsId: 'studentui-sonar-token') {
+                withSonarQubeEnv(installationName: 'sonar' , credentialsId: 'studentui-sonar-token') {
                     sh 'mvn sonar:sonar'
                 }
                 echo 'Tested successfully'
